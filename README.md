@@ -16,4 +16,10 @@ Small application that helps managing a cinema theatre.
 
 10 Oct 2023: Implemented printing available seats and rows / calculating profit based on conditions
 
-Completed 2/5 stages
+11 Oct 2023: 
+- generate 2D array containing cinema room rows and seats
+- pretty print all cinema rows and seats that are available
+- added method to calculate ticket price
+- Get input from user on the row and seat, calculate price and book the seat.
+
+Completed 3/5 stages
