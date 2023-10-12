@@ -22,4 +22,7 @@ Small application that helps managing a cinema theatre.
 - added method to calculate ticket price
 - Get input from user on the row and seat, calculate price and book the seat.
 
-Completed 3/5 stages
+12 Oct 2023
+- Added menu with options for buying tickets, showing existing seat bookings and exiting the program.
+
+Completed 4/5 stages

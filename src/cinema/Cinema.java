@@ -31,7 +31,7 @@ public class Cinema {
         }
     }
 
-    public static void calculate_profit(int numberOfRows, int numberOfSeats) {
+    public static void calculateProfit(int numberOfRows, int numberOfSeats) {
         int totalNumberOfSeats = numberOfSeats * numberOfRows;
         int totalProfit = 0;
         if (totalNumberOfSeats < 60) {
@@ -49,7 +49,7 @@ public class Cinema {
         System.out.printf("$%d%n", totalProfit);
     }
 
-    public static int get_ticket_price(int numberOfRows, int numberOfSeats, int selectRow, int selectSeat) {
+    public static int getTicketPrice(int numberOfRows, int numberOfSeats, int selectRow, int selectSeat) {
         int ticketPrice;
         if (numberOfRows * numberOfSeats < 60) {
             ticketPrice = 10;
@@ -60,7 +60,7 @@ public class Cinema {
         return ticketPrice;
     }
 
-    public static int get_number(String message) {
+    public static int getNumber(String message) {
         Scanner input = new Scanner(System.in);
         System.out.println(message);
 
@@ -68,7 +68,7 @@ public class Cinema {
         return number;
     }
 
-    public static char[][] generate_cinema(int numberOfRows, int numberOfSeats) {
+    public static char[][] generateCinema(int numberOfRows, int numberOfSeats) {
         char[][] cinema = new char[numberOfRows][numberOfSeats];
 
         for (int i = 0; i < cinema.length; i++) {
@@ -80,27 +80,54 @@ public class Cinema {
         return cinema;
     }
 
-    public static void update_seat(char[][] cinema, int row_seat, int seat_number) {
+    public static void updateSeat(char[][] cinema, int row_seat, int seat_number) {
         cinema[row_seat-1][seat_number-1] = 'B';
+    }
+
+    public static void buyTicket(char[][] cinema, int numberOfRows, int numberOfSeats) {
+        int selectRow = getNumber("Enter a row number: ");
+        int selectSeat = getNumber("Enter a seat number in that row: ");
+
+        int ticketPrice = getTicketPrice(numberOfRows, numberOfSeats, selectRow, selectSeat);
+        System.out.printf("Ticket price: $%d%n" + "\n", ticketPrice);
+        updateSeat(cinema, selectRow, selectSeat);
+    }
+
+    public static void mainLoop(char[][] cinema, int choice, int numberOfRows, int numberOfSeats) {
+        switch (choice) {
+            case 0: break;
+            case 1: printCinema(cinema);
+                break;
+            case 2: buyTicket(cinema, numberOfRows, numberOfSeats);
+                break;
+            default:
+                System.out.println("Option not available. Please select from the available.");
+        }
+    }
+
+    public static void printMenu() {
+        System.out.println("""
+                1. Show the seats
+                2. Buy a ticket
+                0. Exit
+                """);
     }
 
     public static void main(String[] args) {
         // Write your code here
+        Scanner scanner = new Scanner(System.in);
 
-        int numberOfRows = get_number("Enter the number of rows:");
-        int numberOfSeats = get_number("Enter the number of seats in each row:");
+        int numberOfRows = getNumber("Enter the number of rows:");
+        int numberOfSeats = getNumber("Enter the number of seats in each row:");
 
-        char[][] arr = generate_cinema(numberOfRows, numberOfSeats);
-        printCinema(arr);
+        char[][] arr = generateCinema(numberOfRows, numberOfSeats);
 
-        int selectRow = get_number("Enter a row number: ");
-        int selectSeat = get_number("Enter a seat number in that row: ");
-
-        int ticketPrice = get_ticket_price(numberOfRows, numberOfSeats, selectRow, selectSeat);
-        System.out.printf("Ticket price: $%d%n" + "\n", ticketPrice);
-        update_seat(arr, selectRow, selectSeat);
-
-        printCinema(arr);
+        int choice = -1;
+        while (choice != 0) {
+            printMenu();
+            choice = scanner.nextInt();
+            mainLoop(arr, choice, numberOfRows, numberOfSeats);
+        }
 
 //        calculate_profit(numberOfRows, numberOfSeats);
     }
