@@ -10,40 +10,124 @@ Purpose of the project is to learn Java basics and to get more familiar with its
 - Java 17
 
 ## Project description
-Small application for managing a cinema theatre room.
+Console application for booking a seat into a Cinema Room.
 
-## Changelog
+How to run: 
 
-10 Oct 2023: 
-- Implemented printing available seats and rows
-- Calculating total possible profit based on the number of total room seats
+#### Examples
 
-11 Oct 2023: 
-- generate 2D array containing cinema room rows and seats
-- pretty print all cinema rows and seats that are available
-- added method to calculate ticket price
-- Get input from user on the row and seat, calculate price and book the seat.
+#### Example 1
+Main program menu
+```shell
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+```
 
-12 Oct 2023
-- Added menu with options for: 
-  - buying tickets
-  - printing existing bookings
-  - exiting the program
+#### Example 2
+```shell
+Enter the number of rows:
+> 6
+Enter the number of seats in each row:
+> 6
 
-13 Oct 2023
-- Added a few input validations:
-  - check if row and/or seat is in available cinema room range
-  - check if seat already booked
-  - added new option in menu for showing existing cinema statistics regarding:
-    - How many tickets were bought as a number
-    - How many tickets were bought as a percentage
-    - What is the total possible profit based on the number of seats
-    - Current amount of profit based on the number of tickets bought
-  
-  Completed project
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 3
 
-TODO: Once I get more familiar with OOP in Java I will refactor this project to make proper use of classes and objects as the current solution is mostly procedural, even if it's wrapped up in a class :).
+Number of purchased tickets: 0
+Percentage: 0.00%
+Current income: $0
+Total income: $360
 
-## Project status
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 2
+
+Enter a row number:
+> 1
+Enter a seat number in that row:
+> 1
+
+Ticket price: $10
+
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 3
+
+Number of purchased tickets: 1
+Percentage: 2.78%
+Current income: $10
+Total income: $360
+
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 2
+
+Enter a row number:
+> 1
+Enter a seat number in that row:
+> 1
+
+That ticket has already been purchased!
+
+Enter a row number:
+> 10
+Enter a seat number in that row:
+> 20
+
+Wrong input!
+
+Enter a row number:
+> 4
+Enter a seat number in that row:
+> 4
+
+Ticket price: $10
+
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 1
+
+Cinema:
+  1 2 3 4 5 6
+1 B S S S S S
+2 S S S S S S
+3 S S S S S S
+4 S S S B S S
+5 S S S S S S
+6 S S S S S S
+
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 3
+
+Number of purchased tickets: 2
+Percentage: 5.56%
+Current income: $20
+Total income: $360
+
+1. Show the seats
+2. Buy a ticket
+3. Statistics
+0. Exit
+> 0
+```
+
+
+### Project status
 
 Completed 5/5 stages
