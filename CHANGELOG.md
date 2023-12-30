@@ -31,3 +31,7 @@ TODO: Once I get more familiar with OOP in Java I will refactor this project to 
 29.12.2023
 - Refactored and simplified methods
 - Split functionality into different classes.
+
+30.12.2023
+- moved fetching input from user from the cinema class to the userinterface
+- moved input validation into separate class

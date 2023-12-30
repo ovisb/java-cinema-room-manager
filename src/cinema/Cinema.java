@@ -1,7 +1,6 @@
 package cinema;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Cinema {
 
@@ -26,49 +25,7 @@ public class Cinema {
         }
     }
 
-    private int getNumber(String message) {
-        Scanner input = new Scanner(System.in);
-        System.out.println(message);
-
-        return input.nextInt();
-    }
-
-    public void buyTicket() {
-        int row;
-        int seat;
-
-        do {
-            row = getNumber("Enter a row number: ") - 1;
-            seat = getNumber("Enter a seat number in that row: ") - 1;
-
-        } while (!validateSeatRow(row, seat));
-
-        makePurchase(row, seat);
-    }
-
-    private boolean validateSeatRow(int row, int seat) {
-        if (!isSeatRowInvalid(row, seat)) {
-            System.out.println("Wrong input!\n");
-            return false;
-        }
-
-        if (isSeatTaken(row, seat)) {
-            System.out.println("That ticket has already been purchased\n");
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean isSeatTaken(int row, int seat) {
-        return this.cinema[row][seat] == 'B';
-    }
-
-    private boolean isSeatRowInvalid(int row, int seat) {
-        return (row >= 0 && seat >= 0) && (row <= this.numberOfRows - 1 && seat <= this.numberOfSeats - 1);
-    }
-
-    private void makePurchase(int row, int seat) {
+    public void makePurchase(int row, int seat) {
 
         int ticketPrice = calculateTicketPrice(row);
         updateSeat(row, seat);
@@ -144,5 +101,17 @@ public class Cinema {
             out.append("\n");
         }
         return out.toString();
+    }
+
+    public int getNumberOfRows() {
+        return numberOfRows;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public char[][] getCinema() {
+        return cinema;
     }
 }

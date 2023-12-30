@@ -42,7 +42,7 @@ public class UserInterface {
                 System.out.println();
                 break;
             case 2:
-                cinemaRoom.buyTicket();
+                buyTicket();
                 System.out.println();
                 break;
             case 3:
@@ -54,4 +54,23 @@ public class UserInterface {
         }
     }
 
+    private void buyTicket() {
+        int row;
+        int seat;
+
+        do {
+            row = getNumber("Enter a row number: ") - 1;
+            seat = getNumber("Enter a seat number in that row: ") - 1;
+
+        } while (!(new ValidateInput(this.cinemaRoom).validateSeatRow(row, seat)));
+
+        cinemaRoom.makePurchase(row, seat);
+    }
+
+    private int getNumber(String message) {
+        Scanner input = new Scanner(System.in);
+        System.out.println(message);
+
+        return input.nextInt();
+    }
 }
