@@ -2,7 +2,7 @@ package cinema;
 
 import java.util.Arrays;
 
-public class Cinema {
+class Cinema {
 
     private final int numberOfRows;
     private final int numberOfSeats;
@@ -12,7 +12,7 @@ public class Cinema {
     private int currentIncome = 0;
     private double purchasedTicketsAsPercent = 0.00;
 
-    public Cinema(int numberOfRows, int numberOfSeats) {
+    Cinema(int numberOfRows, int numberOfSeats) {
         this.numberOfRows = numberOfRows;
         this.numberOfSeats = numberOfSeats;
         this.cinema = new char[numberOfRows][numberOfSeats];
@@ -31,9 +31,31 @@ public class Cinema {
         updateSeat(row, seat);
 
         System.out.printf("Ticket price: $%d%n", ticketPrice);
-        purchasedTickets += 1;
-        currentIncome += ticketPrice;
-        purchasedTicketsAsPercent = ((double) purchasedTickets / totalNumberOfSeats()) * 100;
+        this.purchasedTickets += 1;
+        this.currentIncome += ticketPrice;
+        this.purchasedTicketsAsPercent = ((double) purchasedTickets / totalNumberOfSeats()) * 100;
+    }
+
+    boolean validateSeatRow( int row, int seat) {
+        if (!isSeatRowInvalid(row, seat)) {
+            System.out.println("Wrong input!\n");
+            return false;
+        }
+
+        if (isSeatTaken(row, seat)) {
+            System.out.println("That ticket has already been purchased\n");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isSeatTaken(int row, int seat) {
+        return this.cinema[row][seat] == 'B';
+    }
+
+    private boolean isSeatRowInvalid(int row, int seat) {
+        return (row >= 0 && seat >= 0) && (row <= this.numberOfRows - 1 && seat <= this.numberOfSeats - 1);
     }
 
     private int calculateTicketPrice(int selectRow) {
@@ -111,7 +133,7 @@ public class Cinema {
         return numberOfSeats;
     }
 
-    public char[][] getCinema() {
-        return cinema;
+    public int getPurchasedTickets() {
+        return purchasedTickets;
     }
 }

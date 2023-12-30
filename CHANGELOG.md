@@ -26,12 +26,13 @@
 
   Completed project
 
-TODO: Once I get more familiar with OOP in Java I will refactor this project to make proper use of classes and objects as the current solution is mostly procedural, even if it's wrapped up in a class :).
+~~TODO: Once I get more familiar with OOP in Java I will refactor this project to make proper use of classes and objects as the current solution is mostly procedural, even if it's wrapped up in a class :).~~
 
 29.12.2023
 - Refactored and simplified methods
 - Split functionality into different classes.
 
 30.12.2023
-- moved fetching input from user from the cinema class to the userinterface
-- moved input validation into separate class
+- moved fetching desired row/seat from booking method to userInterface class
+- switched project to use maven 
+- added some unit testing with Junit5 and AssertJ library
