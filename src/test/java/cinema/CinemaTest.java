@@ -16,15 +16,12 @@ class CinemaTest {
 
     @Test
     void shouldInitializeWithCorrectRowsAndSeats() {
-        cinema = new Cinema(3, 3);
         assertThat(cinema.getNumberOfRows()).isEqualTo(3);
         assertThat(cinema.getNumberOfSeats()).isEqualTo(3);
     }
 
     @Test
     void shouldPurchaseSingleTicket() {
-        cinema = new Cinema(3, 3);
-
         cinema.makePurchase(1, 1);
 
         assertThat(cinema.getPurchasedTickets()).isEqualTo(1);
@@ -33,7 +30,6 @@ class CinemaTest {
 
     @Test
     void shouldPurchaseMultipleTickets() {
-        cinema = new Cinema(3, 3);
 
         cinema.makePurchase(0, 0);
         cinema.makePurchase(1, 1);
