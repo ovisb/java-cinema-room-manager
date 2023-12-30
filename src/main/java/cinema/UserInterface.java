@@ -1,15 +1,13 @@
 package cinema;
 
-import java.util.Scanner;
-
 class UserInterface {
-    private final Scanner scanner;
+    private final InputReader inputReader;
     private final Cinema cinemaRoom;
 
     private boolean continueLoop = true;
 
-    UserInterface(Scanner scanner, Cinema cinemaRoom) {
-        this.scanner = scanner;
+    UserInterface(InputReader inputReader, Cinema cinemaRoom) {
+        this.inputReader = inputReader;
         this.cinemaRoom = cinemaRoom;
     }
 
@@ -17,7 +15,7 @@ class UserInterface {
         while (this.continueLoop) {
             printMenu();
 
-            int choice = scanner.nextInt();
+            int choice = inputReader.getNumber("");
 
             menuSelect(choice);
         }
@@ -32,20 +30,13 @@ class UserInterface {
         """);
     }
 
-    private int getNumber(String message) {
-        Scanner input = new Scanner(System.in);
-        System.out.println(message);
-
-        return input.nextInt();
-    }
-
     private void buyTicket() {
         int row;
         int seat;
 
         do {
-            row = getNumber("Enter a row number: ") - 1;
-            seat = getNumber("Enter a seat number in that row: ") - 1;
+            row = inputReader.getNumber("Enter a row number: ") - 1;
+            seat = inputReader.getNumber("Enter a seat number in that row: ") - 1;
 
         } while (!(cinemaRoom.validateSeatRow(row, seat)));
 

@@ -12,8 +12,9 @@ public class Main {
         int seats = scanner.nextInt();
 
         Cinema cinema = new Cinema(rows, seats);
+        InputReader inputReader = new InputReader(scanner);
 
-        UserInterface userInterface = new UserInterface(scanner, cinema);
+        UserInterface userInterface = new UserInterface(inputReader, cinema);
 
         userInterface.start();
     }

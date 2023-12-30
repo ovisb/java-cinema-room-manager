@@ -36,3 +36,4 @@
 - moved fetching desired row/seat from booking method to userInterface class
 - switched project to use maven 
 - added some unit testing with Junit5 and AssertJ library
+- moved taking input to separate class + unit testing using mockito
